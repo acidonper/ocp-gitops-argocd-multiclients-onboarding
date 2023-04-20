@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ $.Values.name }}
+  namespace: {{ $.Values.argocd_namespace }}
+  labels:
+  {{- with $.Values.global_labels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  annotations:
+  {{- with $.Values.global_annotations }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  description: Jump App CI/CD, GitOps, ServiceMesh and so on
+  sourceRepos:
+  {{- with $.Values.chart_repos }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  destinations:
+  {{- range $ns := $.Values.namespaces }}
+    - namespace: {{ $ns }}
+      server: https://kubernetes.default.svc
+  {{- end }}  
+  clusterResourceWhitelist:
+  {{- with $.Values.objs_allowed }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}

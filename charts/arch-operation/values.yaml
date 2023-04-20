@@ -1,0 +1,35 @@
+# Arch Operation Chart Default Values
+name: arch01
+
+namespaces:
+  - test1
+  - test2      
+
+argocd_instance: argocd
+argocd_namespace: argocd
+
+argocd_quotas:
+  hard:
+    count/application.argoproj.io: 10
+
+chart_repos: 
+  - "https://github.com/acidonper*"
+
+objs_allowed:
+  - group: '*'
+    kind: '*'
+
+default_quotas:
+  hard:
+    pods: 4
+    configmaps: 10
+    persistentvolumeclaims: 4
+    replicationcontrollers: 20
+    secrets: 10
+    services: 10
+
+global_labels: 
+  test.labels.io/testing: test_label
+
+global_annotations:
+  test.annotations.io/testing: test_annotation

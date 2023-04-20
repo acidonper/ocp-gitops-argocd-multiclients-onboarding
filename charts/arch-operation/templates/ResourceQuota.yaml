@@ -1,0 +1,22 @@
+{{- range $ns := $.Values.namespaces }}
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quotas
+  namespace: {{ $ns }}
+spec:
+  {{- with $.Values.default_quotas }}
+    {{- toYaml . | nindent 2 }}
+  {{- end }}
+---
+{{- end }}
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quotas
+  namespace: {{ $.Values.argocd_namespace }}
+spec:
+  {{- with $.Values.argocd_quotas }}
+    {{- toYaml . | nindent 2 }}
+  {{- end }}
+---
