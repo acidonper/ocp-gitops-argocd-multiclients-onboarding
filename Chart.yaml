@@ -27,4 +27,10 @@ dependencies:
   - name: arch-operation
     repository: 'file://./charts/arch-operation'
     version: 0.1.0
-    condition: arch-operation.enabled
+    condition: arch01.enabled
+    alias: arch01
+  - name: arch-operation
+    repository: 'file://./charts/arch-operation'
+    version: 0.1.0
+    condition: arch02.enabled
+    alias: arch02

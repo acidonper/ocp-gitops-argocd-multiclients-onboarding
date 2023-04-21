@@ -1,9 +1,7 @@
 # Arch Operation Chart Default Values
 name: arch01
 
-namespaces:
-  - test1
-  - test2      
+namespaces: []  
 
 argocd_instance: argocd
 argocd_namespace: argocd
@@ -12,8 +10,7 @@ argocd_quotas:
   hard:
     count/application.argoproj.io: 10
 
-chart_repos: 
-  - "https://github.com/acidonper*"
+chart_repos: []
 
 objs_allowed:
   - group: '*'

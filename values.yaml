@@ -1,2 +1,47 @@
-arch-operation:
+##
+# Architecture 01  
+##
+arch01:
   enabled: true
+  name: arch01
+  namespaces:
+    - arch01-test1
+    - arch01-test2
+  argocd_quotas:
+    hard:
+      count/application.argoproj.io: 10
+  chart_repos: 
+    - "https://github.com/acidonper*"
+  objs_allowed:
+    - group: '*'
+      kind: '*'
+  default_quotas:
+    hard:
+      configmaps: 20
+      persistentvolumeclaims: 4
+      replicationcontrollers: 20
+      secrets: 20
+      services: 10
+
+##
+# Architecture 02
+##
+arch02:
+  enabled: true
+  name: arch01
+  namespaces:
+    - arch02-test1
+    - arch02-test2
+  chart_repos: 
+    - "https://github.com/acidonper*"
+  objs_allowed:
+    - group: '*'
+      kind: '*'
+  default_quotas:
+    hard:
+      pods: 4
+      configmaps: 10
+      persistentvolumeclaims: 4
+      replicationcontrollers: 20
+      secrets: 10
+      services: 10
