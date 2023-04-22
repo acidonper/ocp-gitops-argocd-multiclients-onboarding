@@ -27,3 +27,14 @@ spec:
   {{- with $.Values.objs_allowed }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
+  roles:
+  - name: {{ $.Values.name }}-operators
+    description: Read and Sync permissions for operators
+    policies:
+      - p, role:{{ $.Values.name }}-operator, applications, get, dev/*, allow
+      - p, role:{{ $.Values.name }}-operator, applications, sync, dev/*, allow
+    groups:
+    - {{ $.Values.name }}-operators
+  {{- with $.Values.argoproj_extra_roles }}
+    {{- toYaml . | nindent 2 }}
+  {{- end }}

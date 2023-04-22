@@ -10,6 +10,14 @@ arch01:
   argocd_quotas:
     hard:
       count/application.argoproj.io: 10
+  argoproj_extra_roles:
+    - name: arch01-developers
+      description: Read and Sync permissions for operators
+      policies:
+        - p, role:developer-dev, applications, get, dev/*, allow
+        - p, role:developer-dev, applications, sync, dev/*, allow
+      groups:
+      - arch01-developers
   chart_repos: 
     - "https://github.com/acidonper*"
   objs_allowed:
@@ -28,7 +36,7 @@ arch01:
 ##
 arch02:
   enabled: true
-  name: arch01
+  name: arch02
   namespaces:
     - arch02-test1
     - arch02-test2
