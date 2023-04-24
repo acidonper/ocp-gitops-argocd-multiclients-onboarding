@@ -1,8 +1,8 @@
-{{- range $ns := $.Values.namespaces }}
+{{- range $key, $val := $.Values.namespaces }}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ $ns }}
+  name: {{ $key }}
   labels:
   {{- with $.Values.global_labels }}
     {{- toYaml . | nindent 4 }}

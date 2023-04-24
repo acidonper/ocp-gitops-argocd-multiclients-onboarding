@@ -19,8 +19,8 @@ spec:
     {{- toYaml . | nindent 4 }}
   {{- end }}
   destinations:
-  {{- range $ns := $.Values.namespaces }}
-    - namespace: {{ $ns }}
+  {{- range $key, $val := $.Values.namespaces }}
+    - namespace: {{ $key }}
       server: https://kubernetes.default.svc
   {{- end }}  
   clusterResourceWhitelist:
@@ -31,8 +31,7 @@ spec:
   - name: {{ $.Values.name }}-operators
     description: Read and Sync permissions for operators
     policies:
-      - p, role:{{ $.Values.name }}-operator, applications, get, dev/*, allow
-      - p, role:{{ $.Values.name }}-operator, applications, sync, dev/*, allow
+      - p, role:{{ $.Values.name }}-operator, applications, *, *, allow
     groups:
     - {{ $.Values.name }}-operators
   {{- with $.Values.argoproj_extra_roles }}

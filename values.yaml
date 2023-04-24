@@ -5,31 +5,9 @@ arch01:
   enabled: true
   name: arch01
   namespaces:
-    - arch01-test1
-    - arch01-test2
-  argocd_quotas:
-    hard:
-      count/application.argoproj.io: 10
-  argoproj_extra_roles:
-    - name: arch01-developers
-      description: Read and Sync permissions for operators
-      policies:
-        - p, role:developer-dev, applications, get, dev/*, allow
-        - p, role:developer-dev, applications, sync, dev/*, allow
-      groups:
-      - arch01-developers
-  chart_repos: 
-    - "https://github.com/acidonper*"
-  objs_allowed:
-    - group: '*'
-      kind: '*'
-  default_quotas:
-    hard:
-      configmaps: 20
-      persistentvolumeclaims: 4
-      replicationcontrollers: 20
-      secrets: 20
-      services: 10
+    arch01-test1: {}
+    arch01-test2: {}
+    arch01-test3: {}
 
 ##
 # Architecture 02
@@ -38,18 +16,34 @@ arch02:
   enabled: true
   name: arch02
   namespaces:
-    - arch02-test1
-    - arch02-test2
+    arch02-test1:
+      quotas:
+          hard:
+            configmaps: 30
+    arch02-test2: {}
+    arch02-test3: {}
+  argocd_quotas:
+    hard:
+      count/application.argoproj.io: 15
+  default_quotas:
+    hard:
+      limits.cpu: "6" 
+      limits.memory: 254Gi 
+      limits.ephemeral-storage: 42Gi
+  argoproj_extra_roles:
+    - name: arch02-developers
+      description: Read and Sync permissions for operators
+      policies:
+        - p, role:developer-dev, applications, get, dev/*, allow
+        - p, role:developer-dev, applications, sync, dev/*, allow
+      groups:
+      - arch02-developers
   chart_repos: 
     - "https://github.com/acidonper*"
   objs_allowed:
-    - group: '*'
-      kind: '*'
-  default_quotas:
-    hard:
-      pods: 4
-      configmaps: 10
-      persistentvolumeclaims: 4
-      replicationcontrollers: 20
-      secrets: 10
-      services: 10
+    - group: 'apps'
+      kind: Deployment
+    - group: ''
+      kind: Service
+    - group: 'route.openshift.io'
+      kind: Route

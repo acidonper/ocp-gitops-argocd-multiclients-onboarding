@@ -1,7 +1,7 @@
 # Arch Operation Chart Default Values
 name: arch01
 
-namespaces: []  
+namespaces: {} 
 
 argocd_instance: argocd
 argocd_namespace: argocd
@@ -18,6 +18,12 @@ objs_allowed:
 
 default_quotas:
   hard:
+    requests.cpu: "1" 
+    requests.memory: 1Gi 
+    requests.ephemeral-storage: 2Gi 
+    limits.cpu: "2" 
+    limits.memory: 2Gi 
+    limits.ephemeral-storage: 4Gi
     pods: 4
     configmaps: 10
     persistentvolumeclaims: 4
