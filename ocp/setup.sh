@@ -69,5 +69,10 @@ cat oauth.yaml | oc apply -f -
 ##
 oc apply -f ocp/subscription.yaml
 sleep 60
+oc appy -f ocp/role-admin-quotas.yaml
+oc adm policy add-cluster-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+oc adm policy add-cluster-role-to-user admin-quotas system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 oc new-project argocd
+oc label namespace argocd argocd.argoproj.io/managed-by=openshift-gitops
 oc apply -f ocp/argocd.yaml -n argocd
+oc apply -f ocp/application.yaml
