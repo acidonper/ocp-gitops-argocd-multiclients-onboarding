@@ -1,8 +1,8 @@
-# Argo CD Multi-Architecture Onboarding 
+# Argo CD Multi-Clients Onboarding 
 
-This repository contains an automated process to configure Argo CD multi-architecture instances with diferent permissions based on a Helm Chart and GitOps approach.
+This repository contains an automated process to configure Argo CD multi-clients instances with diferent permissions based on a Helm Chart and GitOps approach.
 
-This multi-architecture environment tries to reproduce a supposed Platform as a Service environment where there are a set of Openshift Clusters that have to be shared by multiple clients, named architectures.
+This multi-clients environment tries to reproduce a supposed Platform as a Service environment where there are a set of Openshift Clusters that have to be shared by multiple clients, named architectures.
 
 The idea is to provide a Helm Chart to automate the architectures onboarding process with a GitOps approach managing the following elements:
 
