@@ -11,4 +11,4 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: .
-    repoURL: 'https://github.com/autstudent/arch-apps-onboarding.git'
+    repoURL: 'https://github.com/acidonper/arch-apps-onboarding.git'

@@ -34,3 +34,8 @@ dependencies:
     version: 0.1.0
     condition: arch02.enabled
     alias: arch02
+  # - name: arch-operation
+  #   repository: 'file://./charts/arch-operation'
+  #   version: 0.1.0
+  #   condition: arch03.enabled
+  #   alias: arch03

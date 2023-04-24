@@ -15,6 +15,8 @@ arch01:
 arch02:
   enabled: true
   name: arch02
+  argocd_instance: argocd
+  argocd_namespace: gitops-arch02
   namespaces:
     arch02-test1:
       quotas:
@@ -47,3 +49,14 @@ arch02:
       kind: Service
     - group: 'route.openshift.io'
       kind: Route
+
+##
+# Architecture 03
+##
+# arch03:
+#   enabled: true
+#   name: arch03
+#   namespaces:
+#     arch03-test1: {}
+#     arch03-test2: {}
+#     arch03-test3: {}
