@@ -3,6 +3,7 @@ name: arch01
 
 namespaces: {} 
 
+argocd_infra_ns: openshift-gitops
 argocd_instance: argocd
 argocd_namespace: argocd
 
